@@ -20,12 +20,22 @@ const navMenu = [
         icon: MdLibraryMusic,
         route: "/library"
     },
-    {
-        name: 'Home',
-        icon: MdHome,
-        route: "/"
-    }
 ]
+
+const musicMenu = [
+    {
+        name: 'CreatePlaylist',
+        icon: MdPlaylistAdd,
+        route: "/"
+    },
+    {
+        name: 'Favorites',
+        icon: MdFavorite,
+        route: "/"
+    },
+]
+
+const playlists = new Array(30).fill(1).map((_ , i) => `Playlist ${i + 1}`)
 
 
 
@@ -38,7 +48,7 @@ const Sidebar = () => {
             width="100%" height="calc(100vh - 100px)"
             bg="black" paddingX="5px" color="gray">
 
-            <Box paddingY="20px">
+            <Box paddingY="20px" height="100%">
                 <Box width="120px" marginBottom="20px" paddingX="20px">
                     <Image src="/circle.svg" height={60} width={60}></Image>
                 </Box>
@@ -50,7 +60,7 @@ const Sidebar = () => {
                                 <LinkBox>
                                     <Link href={menu.route} passHref>
                                         <LinkOverlay>
-                                            <ListIcon as={menu.icon} color="white" marginRight="20px"/>
+                                            <ListIcon as={menu.icon} color="white" marginRight="20px"/>{menu.name}
                                         </LinkOverlay>
                                     </Link>
                                 </LinkBox>
@@ -59,6 +69,42 @@ const Sidebar = () => {
                     </List>
 
                 </Box>
+                <Box marginBottom="20px" marginTop="20px">
+                    <List spacing={2}>
+                        {/* Implicit return */}
+                        {musicMenu.map(menu => (
+                            <ListItem paddingX="20px" fontSize="16px" key={menu.name}>
+                                <LinkBox>
+                                    <Link href={menu.route} passHref>
+                                        <LinkOverlay>
+                                            <ListIcon as={menu.icon} color="white" marginRight="20px"/>{menu.name}
+                                        </LinkOverlay>
+                                    </Link>
+                                </LinkBox>
+                            </ListItem>
+                        ))}
+                    </List>
+
+                </Box>
+                <Divider color="gray.700"/>
+                <Box height="60%" overflowY="auto" paddingY="20px">
+                    <List spacing={2}>
+                        {playlists.map(playlist=> (
+                            <ListItem paddingX="20px" key={playlist}>
+                                <LinkBox>
+                                    <Link href="/" passHref>
+                                        <LinkOverlay>
+                                            {playlist}
+                                        </LinkOverlay>
+                                    </Link>
+
+                                </LinkBox>
+                            </ListItem>
+                        ))}
+                    </List>
+                </Box>
+
+
 
             </Box>
         </Box>
