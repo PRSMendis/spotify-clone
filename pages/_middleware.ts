@@ -9,7 +9,6 @@ export default function middleware(req) {
         if (!token) {
             const url = req.nextUrl.clone()
             url.pathname = "/signin"
-            // return NextResponse.redirect('/signin')
             return NextResponse.redirect(url)
         }
     }

@@ -1,26 +1,24 @@
 import { Box, Flex, Input, Button } from "@chakra-ui/react";
 import Image from "next/image";
-import Router, { useRouter } from "next/router";
+import { useRouter } from "next/router";
 import { FC, useState } from "react";
-import { useSWRConfig } from "swr";
 import { auth } from "../../lib/mutations";
 
 const AuthForm: FC<{mode: 'signin' | 'signup'}> = ({mode}) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [isLoading, setLoading] = useState(false)
-    const route = useRouter();
+    const [isLoading, setIsLoading] = useState(false)
+    const router = useRouter();
 
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
-        setLoading(true); 
-
-        await auth(mode, {email, password})
-        setLoading(false)
-        Router.push("/")
-
-    }
+        e.preventDefault()
+        setIsLoading(true)
+    
+        await auth(mode, { email, password })
+        setIsLoading(false)
+        router.push('/test')
+      }
 
     return (
         <Box height="100vh" width="100vw" bg="black" color="white">
