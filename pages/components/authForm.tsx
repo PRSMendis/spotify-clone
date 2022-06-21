@@ -7,7 +7,7 @@ import { auth } from "../../lib/mutations";
 const AuthForm: FC<{mode:string}> = ({mode}) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [loading, setLoading] = useState('')
+    const [isLoading, setLoading] = useState(false)
 
     return (
         <Box height="100vh" width="100vw" bg="black" color="white">
@@ -15,7 +15,23 @@ const AuthForm: FC<{mode:string}> = ({mode}) => {
                 hello
             </Flex>
             <Flex justify="center" align="center" height="calc(100vh - 100px)">
-                form
+                <Box padding="50px" bg="gray.900" borderRadius="6px">
+                    <form>
+                        <Input placeholder='email'
+                        type='email'
+                        onChange={(e) => setEmail(e.target.value)}
+                        />
+                        <Input placeholder='password'
+                        type='passsword'
+                        onChange={(e) => setPassword(e.target.value)}
+                        />
+                        <Button type="submit" bg="green.500" isLoading={isLoading}>
+                            {mode}
+                        </Button>
+
+                    </form>
+                </Box>
+
             </Flex>
 
         </Box>
