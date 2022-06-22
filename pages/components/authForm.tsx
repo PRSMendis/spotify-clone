@@ -17,7 +17,7 @@ const AuthForm: FC<{mode: 'signin' | 'signup'}> = ({mode}) => {
     
         await auth(mode, { email, password })
         setIsLoading(false)
-        console.log(window.location.href.split(mode)[0])
+        
         // const url =window.location.href.split(mode)[0]
         // const url = new URL('/')
         // url.pathname = '/'
