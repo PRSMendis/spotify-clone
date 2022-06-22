@@ -5,7 +5,7 @@ import prisma from './prisma';
 
 export const validateRoute = (handler) => {
     return async (req: NextApiRequest, res: NextApiResponse) => {
-        const {RAY_ACCES_TOKEN: token} = req.cookies;
+        const {RAY_ACCESS_TOKEN: token} = req.cookies;
 
         if (token) {
             let user;
@@ -21,7 +21,7 @@ export const validateRoute = (handler) => {
                 }
             } catch(error) {
                 res.status(401)
-                res.json({ error: "Not Authorised"})
+                res.json({ error: "Not Authorised aaaa"})
                 return
             }
             return handler (req,res, user)
