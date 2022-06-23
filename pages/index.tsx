@@ -1,9 +1,7 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
 import GradientLayout from './components/gradientLayout'
+import prisma from '../lib/prisma'
 
-export default function Home() {
+const Home = () =>  {
   return (<GradientLayout color='red' roundImage='true' 
   subtitle='profile' 
   title='Rayhan Mendis' 
@@ -13,3 +11,14 @@ export default function Home() {
 
   </GradientLayout>)
 }
+
+export const getServerSideProps = async () => {
+  const artists = await prisma.artist.findMany({})
+
+  return {
+    props:{artists},
+  }
+
+}
+
+export default Home
