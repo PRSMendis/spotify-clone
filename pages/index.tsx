@@ -1,7 +1,7 @@
 import GradientLayout from './components/gradientLayout'
 import prisma from '../lib/prisma'
 
-const Home = () =>  {
+const Home = ({artists}) =>  {
   return (<GradientLayout color='red' roundImage='true' 
   subtitle='profile' 
   title='Rayhan Mendis' 
@@ -14,6 +14,7 @@ const Home = () =>  {
 
 export const getServerSideProps = async () => {
   const artists = await prisma.artist.findMany({})
+  console.log(artists)
 
   return {
     props:{artists},
