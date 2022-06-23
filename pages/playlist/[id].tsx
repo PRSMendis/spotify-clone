@@ -1,6 +1,7 @@
 import { validateToken } from "../../lib/auth"
 import prisma from "../../lib/prisma"
 import GradientLayout from "../components/gradientLayout"
+import SongTable from "../components/songsTable"
 
 const getRBGColor = id => {
     const colors = [
@@ -24,6 +25,8 @@ const Playlist = ({playlist})=> {
     return (
         <GradientLayout color={color} roundImage={false} title = {playlist.name}
          subtitle="playlist" description={`${playlist.songs.length} songs`} image={`https://picsum.photos/400?random=${playlist.id}`} >
+
+            <SongTable/>
 
 
         </GradientLayout>
