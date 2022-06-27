@@ -15,7 +15,6 @@ const SongTable = ({songs}) => {
         console.log('activeSong: ', activeSong);
         setActiveSong(activeSong || songs[0])
         console.log('songs[0]: ', songs[0]);
-
         playSongs(songs)
     }
 
@@ -48,7 +47,7 @@ const SongTable = ({songs}) => {
                     </Thead>
                     <Tbody>
                         {songs.map((song,i)=> (
-                            <Tr sx={{
+                            <Tr suppressHydrationWarning sx={{
                                 transition: 'all .3s',
                                 '&:hover': {
                                     bg: 'rgba(255,255,255,0.1)'

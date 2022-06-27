@@ -1,7 +1,11 @@
 import { validateToken } from "../../lib/auth"
 import prisma from "../../lib/prisma"
 import GradientLayout from "../components/gradientLayout"
-import SongTable from "../components/songsTable"
+import dynamic from 'next/dynamic'
+
+const SongTable = dynamic(() => import("../components/songsTable"), {
+  ssr: false,
+})
 
 const getRBGColor = id => {
     const colors = [

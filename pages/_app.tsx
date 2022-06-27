@@ -35,13 +35,13 @@ const theme = extendTheme({
 })
 
 function MyApp({ Component, pageProps }) {
-  return <ChakraProvider theme={theme}>
+  return <ChakraProvider  theme={theme}>
     <StoreProvider store={store}>
       {Component.authPage ? (
-        <Component {...pageProps} />
+        <Component  {...pageProps} />
       ) : 
       <PlayerLayout>
-        <Component {...pageProps} />
+        <Component  {...pageProps} />
       </PlayerLayout>
     }
     </StoreProvider>
